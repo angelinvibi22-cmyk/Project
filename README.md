@@ -17,10 +17,14 @@ Plaintext[ Spreadsheet (.xlsx) ] → [ Staging Table (u_employee_import) ] → [
 Implementation Steps:
 
 Phase 1: Data PreparationCreate a spreadsheet containing sample employee records with columns: Employee ID, Name, Email, Department, and Location.   Export and save the file locally in Excel format (Sample Spreadsheet.xlsx).
+
 Phase 2: Target Custom Table CreationNavigate to Tables > Create New.   Set Label to Employee Test and Name to u_employee_test.   Access form layout via Form Context Menu > Configure > Form Layout.   Add the required fields:   Employee ID (Type: String)   Employee Name (Type: String)   Email (Type: String)   Department (Type: String)   Location (Type: String)   Save and verify form field rendering.   
+
 Phase 3: Import Set Table SetupOpen System Import Sets > Load Data.   Select Create table and set Label to Employee Import (Name auto-populates to u_employee_import).   Select File source and upload Sample Spreadsheet.xlsx.   Set Sheet number: 1 and Header row: 1, then click Submit. 
+
 Phase 4: Transform Map Configuration & MappingClick Create Transform Map.   Set Name to Sample Spreadsheet Import, Target table to Employee Test [u_employee_test], and verify Source table is Employee Import [u_employee_import].   Align fields using Auto Map Matching Fields or Mapping Assist:   u_employee_id → u_employee_id   u_name → u_employee_name   u_email → u_email   u_department → u_department   u_location → u_location   Click Transform to process initial records into the target table. 
-Phase 5: Coalesce Setup (Upsert Logic)Open Sample Spreadsheet Import under System Import Sets > Transform Maps.   Under the Field Maps tab, locate u_employee_id and set Coalesce to true.   Save form changes.   Validation & TestingTest Case: Upsert & Duplicate PreventionPrepare an updated Excel sheet containing 4 rows:   2 existing employee IDs with modified names/emails.   2 completely new employee records.   Re-import via System Import Sets > Load Data using existing table Employee Import and run transformation.   Check Transform History metrics:   Total Records: 4   Inserts: 2 (New employees)   Updates: 2 (Existing employees updated via Coalesce match)   Ignored: 0   Re-run transformation on the same unchanged file to verify duplicate prevention:   Inserts: 0   Updates: 0   Ignored: 4  
+
+Phase 5: Coalesce Setup (Upsert Logic)Open Sample Spreadsheet Import under System Import Sets > Transform Maps.   Under the Field Maps tab, locate u_employee_id and set Coalesce to true. Validation & TestingTest Case: Upsert & Duplicate PreventionPrepare an updated Excel sheet containing 4 rows:   2 existing employee IDs with modified names/emails.   2 completely new employee records.   Re-import via System Import Sets > Load Data using existing table Employee Import and run transformation.   Check Transform History metrics:   Total Records: 4   Inserts: 2 (New employees)   Updates: 2 (Existing employees updated via Coalesce match) Ignored: 0   Re-run transformation on the same unchanged file to verify duplicate prevention:   Inserts: 0   Updates: 0   Ignored: 4  
 
 Analytics & Dashboard Integration:
 
