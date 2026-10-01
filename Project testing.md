@@ -1,17 +1,130 @@
-1. Overview & Core ObjectivesProject Testing is the systematic process of executing software with the intent of finding bugs, verifying functional correctness, validating business requirements, and assessing non-functional qualities such as security, performance, and usability.Primary ObjectivesDefect Identification: Uncover software flaws, edge-case failures, and regressions before production deployment.Requirement Validation: Ensure the final deliverable satisfies both business requirements and technical specifications.Risk Mitigation: Lower operational risk, financial exposure, and downtime associated with system failures.Quality Assurance Baseline: Establish repeatable quality standards across continuous integration and release cycles.2. Software Testing Life Cycle (STLC)[1. Requirements Analysis] ➔ [2. Test Planning] ➔ [3. Test Design & Development] ➔ [4. Environment Setup] ➔ [5. Execution & Logging] ➔ [6. Test Closure]
-Key StagesRequirements Analysis: QA team reviews Functional Requirements Specifications (FRS) and User Acceptance Criteria to identify testable items.Test Planning: Define testing scope, strategy, resource allocation, schedule, test tool selection, and risk management.Test Design & Development: Write detailed test cases, test scripts, and prepare test data sets.Environment Setup: Configure hardware, software, network configurations, and database state mirroring production conditions.Test Execution & Defect Logging: Execute manual and automated test suites, record actual results, and file bug reports for failed cases.Test Closure: Evaluate exit criteria, analyze defect metrics, publish test summary reports, and archive testing artifacts.3. Software Testing Levels & TypesTesting LevelObjectiveTarget ScopeKey Tools / FrameworksUnit TestingVerify individual functions, methods, or components in isolation.Individual classes/methodsJest, JUnit, PyTest, xUnitIntegration TestingVerify interactions between integrated modules or services.Database, APIs, MicroservicesPostman, Supertest, REST AssuredSystem TestingEvaluate complete, fully integrated system performance against requirements.End-to-End ApplicationPlaywright, Cypress, SeleniumAcceptance Testing (UAT)Validate business readiness and user satisfaction prior to release.End-to-End WorkflowsCucumber, User Feedback PlatformsFunctional vs. Non-Functional TestingFunctional Testing: Black-box evaluation of functional logic (e.g., Smoke Testing, Regression Testing, Sanity Testing, Boundary Value Analysis).Non-Functional Testing: White/Gray-box evaluation of system operational characteristics:Performance & Load Testing: Verify system behavior under peak loads (e.g., JMeter, k6, Locust).Security Testing: Identify vulnerabilities and security compliance flaws (e.g., OWASP ZAP, Burp Suite).Usability & Accessibility Testing: Ensure UI accessibility standards (e.g., WCAG 2.1 compliance via Axe).4. Key Testing & Quality MetricsDefect DensityMeasures the number of confirmed defects relative to the size of the software module:$$\text{Defect Density} = \frac{\text{Total Confirmed Defects}}{\text{Size of Module (KLOC or Story Points)}}$$Defect Leakage RateMeasures the percentage of defects missed during internal QA that were discovered in production:$$\text{Defect Leakage (\%)} = \left( \frac{D_{\text{production}}}{D_{\text{QA}} + D_{\text{production}}} \right) \times 100$$Where $D_{\text{production}}$ represents post-release defects and $D_{\text{QA}}$ represents defects identified during pre-release testing.Test Pass Rate$$\text{Test Pass Rate (\%)} = \left( \frac{\text{Passed Test Cases}}{\text{Total Test Cases Executed}} \right) \times 100$$5. Test Automation StrategyAutomation Selection MatrixTest Scenario TypeRecommended ApproachRationaleRegression SuitesAutomateHigh execution frequency; human execution is slow and error-prone.Smoke & Sanity ChecksAutomateCrucial for quick verification of continuous deployment pipelines.Exploratory & Ad-hocManualRequires creative human intuition and adaptive thinking.One-Time / UI PolishingManualRapidly changing UI components yield high maintenance costs for scripts.API / Backend ContractsAutomateHighly stable interfaces with fast execution times and clear pass/fail criteria.6. Test Strategy & Plan (IEEE 829 Standard Structure)An industry-standard layout for documenting a comprehensive Project Test Plan:1. Test Plan Overview & Objectives
-   1.1 Scope (In-Scope vs. Out-of-Scope Items)
-   1.2 Assumptions, Constraints & Risks
-2. Test Approach & Strategy
-   2.1 Testing Levels Applied (Unit, Integration, E2E, Performance)
-   2.2 Entry Criteria (When testing starts)
-   2.3 Exit Criteria (When testing is completed - e.g., 95% pass rate, zero critical bugs)
-3. Test Environment & Data Management
-   3.1 Environment Topology & Access Requirements
-   3.2 Test Data Provisioning & Anonymization Strategies
-4. Defect Management Workflow
-   4.1 Defect Severity Levels (Critical, High, Medium, Low)
-   4.2 Defect Lifecycle (New ➔ Assigned ➔ In-Fix ➔ Retest ➔ Closed)
-5. Roles, Responsibilities & Schedule
-   5.1 Resource Allocation & Responsibilities Matrix
-   5.2 Milestone Schedule & Deliverables
+Report 1: Employees by Department
+
+Data tab
+
+Field	Content
+Report name	Employees by Department
+Source type	Table
+Table	Employee Test [u_employee_test]
+
+This exactly matches the project instructions: the first report is named “Employees by Department”, uses Table as the source type, and uses the Employee Test table.
+
+Then click Next / Type and enter:
+
+Type
+Chart type: Pie
+Click Next
+Configure
+Group by: Department
+Aggregation: Count
+Click Next
+
+These are the specified settings for the Employees by Department report.
+
+Style
+<img width="1911" height="703" alt="image" src="https://github.com/user-attachments/assets/39dc7b03-fb3c-49d7-a554-a11f4ce6cf75" />
+Enter/keep these settings
+Field	What to select
+Group by	Department
+Additional group by	Leave empty
+Display data table	Leave unchecked
+Configure function field	Leave unchanged
+Aggregation	Count
+Set Value Formatting	Leave unchanged
+Max number of groups	System Default
+Show Other	Keep checked
+
+Your screenshot already has the important project settings correct: Group by = Department and Aggregation = Count. The project specifically requires these two settings.
+
+What the screen should look like
+
+Configure
+
+Group by
+┌─────────────────────────┐
+│       Department ▼      │
+└─────────────────────────┘
+
+Additional group by
+┌─────────────────────────┐
+│                         │
+└─────────────────────────┘
+
+☐ Display data table
+
+Aggregation
+┌─────────────────────────┐
+│          Count ▼        │
+└─────────────────────────┘
+
+Set Value Formatting
+
+Max number of groups
+┌─────────────────────────┐
+│     System Default ▼    │
+└─────────────────────────┘
+
+☑ Show Other
+
+             [ Next ]
+Then
+
+Click Next → you will go to the Style section.
+
+For Style, your project says to leave the chart color as default, then click Run and Save.
+<img width="1906" height="861" alt="image" src="https://github.com/user-attachments/assets/3766eeec-f0b6-442d-b878-997c692a82f8" />
+
+Enter/keep these settings
+Style option	What to select
+General	Keep selected
+Chart color	Use color palette
+Set palette	Default UI14
+Display data labels	Leave unchecked
+Custom chart size	Leave unchecked
+Chart size	Large
+Drilldown view	Leave empty
+Decimal precision	2
+Your current screen
+
+Your screenshot already shows the correct default-style configuration:
+
+✅ Chart color: Use color palette
+✅ Palette: Default UI14
+✅ Display data labels: unchecked
+✅ Custom chart size: unchecked
+✅ Chart size: Large
+✅ Drilldown view: empty
+✅ Decimal precision: 2
+
+The pie chart is also displaying the department counts, such as ServiceNow, Salesforce, and Aiml, based on the data currently in your Employee Test table.
+
+What to do next
+
+At the top-right:
+
+Run → check the report → Save
+
+Your project specifically says to leave the chart color at default, then Run and Save the report.
+
+Final result
+
+Your Employees by Department report will be:
+
+Report Name: Employees by Department
+Table: Employee Test [u_employee_test]
+Chart: Pie
+Group By: Department
+Aggregation: Count
+Style: Default
+
+After saving this, you can move on to Report 2 – Employees by Location.
+<img width="1910" height="893" alt="image" src="https://github.com/user-attachments/assets/5c611889-2b39-4ba5-92a4-d8158205b351" />
+
+
+
+
+
+
+Leave the chart color as Default
+Click Run
+Click Save
