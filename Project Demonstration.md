@@ -1,118 +1,59 @@
-1. Overview & Core Objectives
-A Project Demonstration (Demo) is a structured live presentation or showcase of a completed or milestone software product to key stakeholders, clients, executive leaders, or project sponsors.
+**1. Introduction**
 
-Primary Objectives
-Validate Value Realization: Prove that the software solves the target business problem and satisfies user requirements.
+Good morning everyone. Today I am going to demonstrate my project titled “Import Data Using Transform Maps” in ServiceNow.
 
-Gather Stakeholder Feedback: Collect actionable insights, UX adjustments, and functional feedback before final release.
+The main objective of this project is to import employee data from an Excel spreadsheet into ServiceNow using Import Sets and Transform Maps.
 
-Secure Alignment & Sign-off: Gain formal approval for milestone completion, deployment phases, or project budget extensions.
+This project also includes Coalesce to prevent duplicate records, along with Reports and Dashboards for analyzing employee information.
 
-Build Team Credibility: Highlight team progress, technical craftsmanship, and functional readiness.
+**2. Employee Table and Import Set**
 
-2. Key Phases of a Successful Demonstration
-[1. Preparation & Dry Run] ➔ [2. Agenda & Framing] ➔ [3. User Journey Execution] ➔ [4. Q&A & Technical Deep-Dive] ➔ [5. Action Item Capture]
-1. Preparation & Dry Run
-Environment Verification: Run the demo on a dedicated, stable Demo/Staging environment with realistic, clean dummy data.
+First, I created a custom table called Employee Test, which is the target table for storing employee information.
 
-Dry Run: Execute an end-to-end rehearsal 24 hours prior to identify UI glitches, broken links, or API latency issues.
+The table contains five fields: Employee ID, Employee Name, Email, Department, and Location.
 
-Fallback Plan: Prepare backup recordings, screenshots, or local environments in case of live network failures.
+Next, I created an Import Set table called Employee Import. This table acts as a staging area where employee data from the Excel spreadsheet is initially loaded.
 
-2. Context Framing (First 5 Minutes)
-Set the stage by framing what problem was solved, who the primary persona is, and which key metrics or features are being showcased.
+**3. Transform Map and Data Import**
 
-3. Narrative-Driven Execution (15–20 Minutes)
-Tell a cohesive story through user scenarios instead of performing a dry, mechanical feature-by-feature tour.
+Next, I created a Transform Map named Sample Spreadsheet Import.
 
-4. Interactive Q&A (10–15 Minutes)
-Address stakeholder questions, clarify design trade-offs, and note feature requests without getting defensive.
+The source table is Employee Import, and the target table is Employee Test.
 
-5. Wrap-Up & Next Steps (5 Minutes)
-Summarize agreed feedback, define action items, and state upcoming project milestones or deployment schedules.
+I mapped the source fields to their corresponding target fields using field mapping. After saving the Transform Map, I executed the transformation.
 
-3. Live Demo vs. Rehearsal Checklist
-Stage	Focus Area	Essential Checklist Items
-Pre-Demo (24 Hours Prior)	Environment & Data	
-- [ ] Seed database with clean, non-offensive realistic data.
+ServiceNow transferred the employee records from the Import Set table to the Employee Test table. I then verified that the records were successfully imported.
 
+**4. Coalesce and Duplicate Prevention
+**
+Next, I implemented Coalesce in the Transform Map using Employee ID as the identifying field.
 
-- [ ] Disable unpredictable auto-updates or background cron jobs.
+Coalesce helps ServiceNow identify existing employee records during repeated imports.
 
+When an existing Employee ID is imported with updated information, the corresponding record can be updated instead of creating a duplicate. New Employee IDs are inserted as new records.
 
-- [ ] Run full narrative script end-to-end without stopping.
+I verified the results using Transform History.
 
-Pre-Demo (30 Mins Prior)	Setup & Hardware	
-- [ ] Turn off notifications (Slack, Teams, Email, OS notifications).
+**5. Reports and Dashboard**
 
+Next, I created three reports using the Employee Test table.
 
-- [ ] Clear browser cache/history and hide unneeded tabs/bookmarks.
+Employees by Department: Displays employee distribution by department using a Pie Chart.
 
+Employees by Location: Displays employee distribution by location using a Bar Chart.
 
-- [ ] Test audio, screen sharing resolution, and display scaling.
+Employee List Report: Displays employee details, including Employee ID, Name, Email, Department, and Location.
 
-During Demo	Delivery & Narrative	
-- [ ] Speak slowly and pause after key milestone interactions.
+Finally, I created a dashboard named Employee Analytics Dashboards and added all three reports to it.
 
+This dashboard provides a centralized view of employee information.
 
-- [ ] Highlight value to user/business rather than raw code syntax.
+**6. Conclusion
+**
+To conclude, this project demonstrates how ServiceNow can import and manage employee data efficiently using Import Sets and Transform Maps.
 
+Coalesce helps prevent duplicate records, while Reports and Dashboards make employee information easier to analyze.
 
-- [ ] Keep cursor movements smooth and deliberate.
+This completes my project demonstration.
 
-Post-Demo	Follow-through	
-- [ ] Send meeting summary notes and recorded video link within 24 hours.
-
-
-- [ ] Document identified bugs or feature requests in the backlog.
-
-4. Narrative-Driven Demo Script Structure
-A structured narrative format ensures the audience stays engaged by focusing on user outcomes:
-
-1. Persona & Goal Setup
-   "Meet Sarah, a Operations Manager who currently spends 3 hours/day manually processing invoices..."
-
-2. The Pain Point
-   "Notice how in the legacy workflow, Sarah had to cross-reference three spreadsheets..."
-
-3. The Solution Walkthrough (Live Execution)
-   "Now, with our new Automated Ingestion Engine, Sarah simply drags and drops the batch file..."
-   [Perform Action smoothly on screen]
-
-4. The Value Highlight
-   "The system extracts the fields in under 2 seconds, cutting total processing time by 85%."
-5. Handling Unexpected Demo Failures
-When live bugs, latency spikes, or errors occur during a presentation:
-
-Stay Calm & Acknowledge: Never try to hide an error message on screen. Acknowledge it directly: "It looks like we hit a network latency issue with this microservice."
-
-Pivot to Backup Artifacts: Seamlessly transition to pre-recorded video clips, screenshots, or an alternative account without wasting time debugging live.
-
-Protect the Flow: Avoid troubleshooting code live during the presentation unless explicitly invited by a technical audience.
-
-Document and Move On: Note the issue for the post-demo debrief and proceed to the next functional scenario.
-
-6. Post-Demo Action & Feedback Matrix
-Categorize post-demo stakeholder inputs immediately to manage project scope effectively:
-
-                                  ┌── 1. Critical Defects (Fix prior to production deployment)
-                                  │
-Stakeholder Demo Feedback Inputs ─┼── 2. Scope Creep / New Ideas (Log in backlog for future releases)
-                                  │
-                                  └── 3. UX Polish / Refinements (Incorporate if within buffer)
-Post-Demo Summary Template
-Markdown
-# Project Demo Summary: [Project Name - Milestone X]
-
-* **Date:** YYYY-MM-DD
-* **Presenters:** [Names]
-* **Attendees:** [Key Stakeholders, Clients, Leads]
-
-## Key Highlights Showcased
-1. Automated Invoice Ingestion Pipeline
-2. Real-time Dashboard & Analytics View
-
-## Stakeholder Feedback & Action Items
-* **[Approved]:** Core workflow accepted for staging deployment.
-* **[Defect]:** Update latency timer on bulk uploads (Assigned to: @DevName, Due: YYYY-MM-DD).
-* **[Future Feature]:** Request for PDF export capability logged as Backlog Item #JIRA-4321.
+https://drive.google.com/file/d/1xRb8gll9w4ErVE5AO7XGz_-3YoMVAd7w/view?usp=sharing
